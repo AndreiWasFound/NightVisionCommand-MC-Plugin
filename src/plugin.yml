@@ -1,0 +1,11 @@
+main: andreiwasfound.nightvisioncommand.Main
+name: NightVisionCommand
+author: AndreiWasFound
+version: 1.0
+
+commands:
+  nv:
+    permission: nightvisioncommand.use
+    description: Give yourself night vision
+    aliases:
+      - nightvision
