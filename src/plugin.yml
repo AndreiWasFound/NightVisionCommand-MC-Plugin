@@ -1,7 +1,7 @@
 main: andreiwasfound.nightvisioncommand.Main
 name: NightVisionCommand
 author: AndreiWasFound
-version: 1.0
+version: 1.1
 
 commands:
   nv:

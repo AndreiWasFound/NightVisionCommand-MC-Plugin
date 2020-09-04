@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Main extends JavaPlugin {
 
-    private List<Player> NightVisionPlayers = new ArrayList<Player>();
+    private List<Player> nightVisionedPlayers = new ArrayList<Player>();
 
     @Override
     public void onEnable() {
@@ -25,13 +25,13 @@ public class Main extends JavaPlugin {
         Player player = (Player) sender;
         if (label.equalsIgnoreCase("nv") || label.equalsIgnoreCase("nightvision")) {
             if (player.hasPermission("nightvisioncommand.use")) {
-                if (getNightVisionPlayers().contains(player)) {
-                    removeNightVisionPlayer(player);
+                if (getNightVisionedPlayers().contains(player)) {
+                    removeNightVisionedPlayer(player);
                     player.sendMessage(ChatColor.RED + "You are no longer night visioned");
                     return true;
                 }
-                if (!getNightVisionPlayers().contains(player)) {
-                    addNightVisionPlayer(player);
+                if (!getNightVisionedPlayers().contains(player)) {
+                    addNightVisionedPlayer(player);
                     player.sendMessage(ChatColor.GREEN + "You are now night visioned");
                     return true;
                 }
@@ -40,23 +40,23 @@ public class Main extends JavaPlugin {
         return false;
     }
 
-    public void addNightVisionPlayer(Player player) {
-        PotionEffect nightvisionpotion = new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 100);
+    public void addNightVisionedPlayer(Player player) {
+        PotionEffect nightvisionpotion = new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 100, true, false, false);
         player.addPotionEffect(nightvisionpotion);
-        NightVisionPlayers.add(player);
+        nightVisionedPlayers.add(player);
     }
 
-    public void removeNightVisionPlayer(Player player) {
+    public void removeNightVisionedPlayer(Player player) {
         player.removePotionEffect(PotionEffectType.NIGHT_VISION);
-        NightVisionPlayers.remove(player);
+        nightVisionedPlayers.remove(player);
     }
 
-    public List<Player> getNightVisionPlayers() {
-        return NightVisionPlayers;
+    public List<Player> getNightVisionedPlayers() {
+        return nightVisionedPlayers;
     }
 
-    public boolean hasNightVisionPlayers() {
-        if (NightVisionPlayers.isEmpty())
+    public boolean hasNightVisionedPlayers() {
+        if (nightVisionedPlayers.isEmpty())
             return false;
         return true;
     }
